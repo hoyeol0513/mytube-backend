@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/user")
-//responsebody를 안달아도 string변환 가능
+//responsebody를 안달아도 string변환 가능 (<- api)
 @RequiredArgsConstructor //매개변수가 있는 생성자 만들기
 public class UserController {
 
@@ -18,7 +18,7 @@ public class UserController {
 
     @PostMapping("/join")
     public String getUser(@RequestBody User user){
-        System.out.println("email:" + user.getEmail());
+        System.out.println(user.toString());
         userService.joinUser(user);
         return "user";
     }
