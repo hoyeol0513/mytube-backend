@@ -17,9 +17,15 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/join")
-    public String getUser(@RequestBody User user){
-        System.out.println(user.toString());
+    public String join(@RequestBody User user){
+        System.out.println("email: " + user.getEmail());
         userService.joinUser(user);
         return "user";
+    }
+
+    @PostMapping("login")
+    public User login(@RequestBody User user){
+        User loginedUser = userService.loginUser(user);
+        return loginedUser;
     }
 }
