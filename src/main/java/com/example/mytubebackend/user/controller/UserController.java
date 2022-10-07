@@ -1,6 +1,7 @@
 package com.example.mytubebackend.user.controller;
 
 import com.example.mytubebackend.user.domain.User;
+import com.example.mytubebackend.user.dto.UserDto;
 import com.example.mytubebackend.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,8 +25,9 @@ public class UserController {
     }
 
     @PostMapping("login")
-    public User login(@RequestBody User user){
-        User loginedUser = userService.loginUser(user);
+    public UserDto login(@RequestBody User user) throws Exception {
+        //엔티티를 바로 내보내지 않고 DTO로 감싸서 내보내기
+        UserDto loginedUser = userService.loginUser(user);
         return loginedUser;
     }
 }
